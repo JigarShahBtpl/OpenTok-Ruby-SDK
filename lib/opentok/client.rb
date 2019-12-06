@@ -12,7 +12,7 @@ module OpenTok
   class Client
     include HTTParty
 
-    open_timeout 2 # Set HTTParty default timeout (open/read) to 2 seconds
+    open_timeout 200 # Set HTTParty default timeout (open/read) to 2 seconds
 
     # TODO: expose a setting for http debugging for developers
     # debug_output $stdout
@@ -20,7 +20,7 @@ module OpenTok
     def initialize(api_key, api_secret, api_url, ua_addendum="")
       self.class.base_uri api_url
       self.class.headers({
-        "User-Agent" => "OpenTok-Ruby-SDK/#{VERSION}" + "-Ruby-Version-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}" + (ua_addendum ? " #{ua_addendum}" : "")        
+        "User-Agent" => "OpenTok-Ruby-SDK/#{VERSION}" + "-Ruby-Version-#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}" + (ua_addendum ? " #{ua_addendum}" : "")
       })
       @api_key = api_key
       @api_secret = api_secret
